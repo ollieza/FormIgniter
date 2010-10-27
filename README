@@ -1,0 +1,51 @@
+FormIgniter v0.8 - http://formigniter.org
+=============================================
+
+Formigniter takes away the drudge work of building your forms. You can now go
+on to build the more interesting custom elements, session controls and data manipulation.
+
+INSTALL
+-------
+
+Copy the controller, view, models, libraries into your application directory of a CodeIgniter installation
+
+Writting forms to files
+-----------------------
+
+If you want your built forms to be written to files please CHMOD the directory /forms at the base of the install.
+
+Save statistics to a database
+------------------------------
+
+If you want to save a count of the number of forms built import the database schema from ./schema.sql
+
+Change the constant DB in ./controllers/formigniter.php to TRUE.
+
+TODO
+-----
+
+Added closing / to checkbox input field
+Changed id to class for checkbox and radio fields
+
+- Go through phpmyadmin and exclude field types which can't have a value/length
+
+tinyint - yes max 255
+text - no 
+date - no 
+smallint - yes max 255
+
+datetime - no
+timestamp - no
+
+- Add support for form_name?? Questionable whether this is necessary
+
+To Decide:
+
+- Add support for 3 field date select boxes
+- Add css class names to form and selects/checkboxes/radios when added
+
+Extra
+-----
+
+If you'd like to request changes, report bug fixes, or contact
+the developer of this library, email <orattue[at]toomanytabs.com>

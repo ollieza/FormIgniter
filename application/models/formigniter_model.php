@@ -1,14 +1,18 @@
 <?php
 /**
- * FormIgniter v0.8 
+ * FormIgniter
  *
  * An easy form generator for the CodeIgniter framework
- *
- * @package		FormIgniter
- * @author		Ollie Rattue - orattue[at]toomanytabs.com
- * @license		http://www.opensource.org/licenses/mit-license.php
- * @link		http://formigniter.org
+ * 
+ * @package   FormIgniter
+ * @version   0.8
+ * @author    Ollie Rattue, Too many tabs <orattue[at]toomanytabs.com>
+ * @copyright Copyright (c) 2010, Ollie Rattue
+ * @license   http://www.opensource.org/licenses/mit-license.php
+ * @link      http://github.com/ollierattue/FormIgniter
+ * @link	  http://formigniter.org
  */
+
 
 class Formigniter_model extends Model {
 

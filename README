@@ -21,29 +21,6 @@ If you want to save a count of the number of forms built import the database sch
 
 Change the constant DB in ./controllers/formigniter.php to TRUE.
 
-TODO
------
-
-Added closing / to checkbox input field
-Changed id to class for checkbox and radio fields
-
-- Go through phpmyadmin and exclude field types which can't have a value/length
-
-tinyint - yes max 255
-text - no 
-date - no 
-smallint - yes max 255
-
-datetime - no
-timestamp - no
-
-- Add support for form_name?? Questionable whether this is necessary
-
-To Decide:
-
-- Add support for 3 field date select boxes
-- Add css class names to form and selects/checkboxes/radios when added
-
 Extra
 -----
 

@@ -345,8 +345,8 @@ EOT;
                          $view .= '<?php $options = array(';
 
                          $view .= '
-                                                  \'\'  => \'Pleas Select\',
-                                                  \'example_value2\'    => \'example option 2\'
+                                                  \'\'  => \'Please Select\',
+                                                  \'example_value1\'    => \'example option 1\'
                                                 ); ?>
 
         <br /><?=form_dropdown(\''.$field_name.'\', $options, set_value(\''.$field_name.'\'))?>

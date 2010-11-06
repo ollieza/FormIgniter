@@ -16,21 +16,21 @@ MVC+SQL as .zip - <a href="<?=base_url()."formigniter/download/{$id}/all"?>">Dow
 
 <h4>Controller file<?php if (!$error): ?> - <a href="<?=base_url()."formigniter/download/{$id}/controller"?>">Download file</a><?php endif; ?></h4>
 <textarea class="textarea" rows="28" cols="50" style="width: 100%;">
-<?php $controller?>
+<?php echo $controller; ?>
 </textarea>
 
 <h4>View file<?php if (!$error): ?> - <a href="<?=base_url()."formigniter/download/{$id}/view"?>">Download file</a><?php endif; ?></h4>
 <textarea class="textarea" rows="28" cols="50" style="width: 100%;">
-<?php $view?>
+<?php echo $view; ?>
 </textarea>
 
 <h4>Model file<?php if (!$error): ?> - <a href="<?=base_url()."formigniter/download/{$id}/model"?>">Download file</a><?php endif; ?></h4>
 <textarea class="textarea" rows="28" cols="50" style="width: 100%;">
-<?php $model?>
+<?php echo $model; ?>
 </textarea>
 
 <h4>SQL file<?php if (!$error): ?> - <a href="<?=base_url()."formigniter/download/{$id}/sql"?>">Download file</a><?php endif; ?></h4>
 <textarea class="textarea" rows="15" cols="50" style="width: 100%;">
-<?php $sql?>
+<?php echo $sql; ?>
 </textarea>
 

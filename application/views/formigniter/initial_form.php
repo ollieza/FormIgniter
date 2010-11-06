@@ -143,7 +143,7 @@ for ($count = 5; $count <= 50; $count = $count * 2) // loop to build 10 form box
 <div id="content">
 
 <?php if ($count != FALSE): ?>
-<?php if (DB):?><p><?php ehco $form_count?> forms ignited so far.</p><?php endif; ?>
+<?php if (DB):?><p><?php echo $form_count?> forms ignited so far.</p><?php endif; ?>
 <?php endif; ?>
 
 <?php if ($this->session->flashdata('error')): ?>

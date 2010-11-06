@@ -770,11 +770,10 @@ class Myform_model extends Model {
         			}
         		}
     
-                        // This looks to the root of the codigniter install
                         // I have not included a readme on the source download
                         // but this is used on my live server at http://toomanytabs.com/formigniter
                         // to distribute to users who have built a form online
-                        $readme_path = './formigniter_readme.txt';
+                        $readme_path = './documents/formigniter_readme.txt';
    
                         if (is_file($readme_path))
                         {

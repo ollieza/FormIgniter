@@ -10,27 +10,27 @@ ignited form number <?=$count?>
 <?php if (!$error): ?>
 MVC+SQL as .zip - <a href="<?=base_url()."formigniter/download/{$id}/all"?>">Download</a>
 <?php else: // user isn't given the option to downoad the files if they were not successfully written to disk ?>
-<?=$error?>
+<?php echo $error?>
 <?php endif; ?> 
 </p>
 
 <h4>Controller file<?php if (!$error): ?> - <a href="<?=base_url()."formigniter/download/{$id}/controller"?>">Download file</a><?php endif; ?></h4>
 <textarea class="textarea" rows="28" cols="50" style="width: 100%;">
-<?=$controller?>
+<?php $controller?>
 </textarea>
 
 <h4>View file<?php if (!$error): ?> - <a href="<?=base_url()."formigniter/download/{$id}/view"?>">Download file</a><?php endif; ?></h4>
 <textarea class="textarea" rows="28" cols="50" style="width: 100%;">
-<?=$view?>
+<?php $view?>
 </textarea>
 
 <h4>Model file<?php if (!$error): ?> - <a href="<?=base_url()."formigniter/download/{$id}/model"?>">Download file</a><?php endif; ?></h4>
 <textarea class="textarea" rows="28" cols="50" style="width: 100%;">
-<?=$model?>
+<?php $model?>
 </textarea>
 
 <h4>SQL file<?php if (!$error): ?> - <a href="<?=base_url()."formigniter/download/{$id}/sql"?>">Download file</a><?php endif; ?></h4>
 <textarea class="textarea" rows="15" cols="50" style="width: 100%;">
-<?=$sql?>
+<?php $sql?>
 </textarea>
 

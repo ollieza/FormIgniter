@@ -5,14 +5,13 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="description" content="Enter your field names, types and rules and FormIgniter will generate all the code, saving you hours. Never hand code a form again!" />
 
-<title>FormIgniter - <? if (isset($title)) {
+<title>FormIgniter - <?php if (isset($title)) {
                         echo $title;
                 }
                 else
                 {
                 echo 'Easy form generator for the CodeIgniter framework';        
                 }
-
                 ?>
 </title>
 
@@ -23,11 +22,11 @@ if ("${_SERVER['HTTP_HOST']}" == 'formigniter.org'):
 <style type='text/css' media='all'>@import url('/assets/css/core.css');</style>
 <style type='text/css'>@import url('/assets/css/zenbox_overlay.css');</style>
 <script type='text/javascript' src='/assets/js/zenbox_overlay.js'></script>
-<? else: ?>
+<?php else: ?>
 <style type='text/css' media='all'>@import url('<?=BASE_URL()?>/assets/css/core.css');</style>
 <style type='text/css'>@import url('<?=BASE_URL()?>assets/css/zenbox_overlay.css');</style>
 <script type='text/javascript' src='<?=BASE_URL()?>assets/js/zenbox_overlay.js'></script>
-<? endif; ?>
+<?php endif; ?>
 
 </head>
 <body>

@@ -125,40 +125,40 @@
 <div class="top_right">
 
 Maximum number of fields 
-<?
+<?php
 for ($count = 5; $count <= 50; $count = $count * 2) // loop to build 10 form boxes
 {
 ?>
-<a href="<?=BASE_URL()?>formigniter/index/<?=$count?>/" 
-<? if ($count == $field_total)
+<a href="<?php echo base_url()."formigniter/index/{$count}"; ?>/" 
+<?php if ($count == $field_total)
 {
      echo 'class="current"';   
 } ?>
-><?=$count?>
+><?php echo $count; ?>
 </a> | 
-<? } // end loop ?>
+<?php } // end loop ?>
  
 </div></div>
 
 <div id="content">
 
 <?php if ($count != FALSE): ?>
-<? if (DB):?><p><?=$form_count?> forms ignited so far.</p><? endif; ?>
+<?php if (DB):?><p><?php ehco $form_count?> forms ignited so far.</p><?php endif; ?>
 <?php endif; ?>
 
 <?php if ($this->session->flashdata('error')): ?>
-<div class="top_error"><?=$this->session->flashdata('error')?></div>
+<div class="top_error"><?php echo $this->session->flashdata('error')?></div>
 <?php endif; ?>
 
 <?php // echo validation_errors(); for debuggging only ?>
 
-<?=form_open( "formigniter/index/$field_total/" ) ?>
+<?php echo form_open( "formigniter/index/$field_total/" ) ?>
 
 <?php if ($form_error): ?>
 <div class="important">
 <h4>Looks like you have an error or two. Scroll down and correct the highlighted field boxes making sure all fields are filled out.</h4>
 </div>
-<? endif; ?>
+<?php endif; ?>
 
 <h3>Fill out the fields you want in your form, with field types, database type, and your validation rules and FormIgniter will output the code for the MVC + a database schema. Give it a go!</h3>
 
@@ -170,15 +170,15 @@ If DB field type is "enum" or "set", please enter the values using this format: 
 <br />If you ever need to put a backslash ("\") or a single quote ("'") amongst those values, precede it with a backslash (for example '\\xyz' or 'a\'b').
 </p>
 
-<?
+<?php
 for ($count = 1; $count <= $field_total; $count++) // loop to build 10 form boxes
 {
 ?>
 
-<?
+<?php
 $box_error = NULL;
 
-if (form_error("view_field_label$count") != NULL || form_error("view_field_name$count") != NULL || form_error("view_field_type$count") != NULL || form_error("db_field_type$count") != NULL || form_error("db_field_length_value$count") != NULL || form_error('cont_validation_rules'.$count.'[]') != NULL) // detect an form_validtion error message and change background if one occurs
+if (form_error("view_field_label{$count}") != NULL || form_error("view_field_name{$count}") != NULL || form_error("view_field_type{$count}") != NULL || form_error("db_field_type{$count}") != NULL || form_error("db_field_length_value{$count}") != NULL || form_error('cont_validation_rules'.$count.'[]') != NULL) // detect an form_validtion error message and change background if one occurs
 {
 	$box_error = 'background: #FBE6F2 !important; border: 1px solid #D893A1 !important;';
 }
@@ -186,124 +186,120 @@ if (form_error("view_field_label$count") != NULL || form_error("view_field_name$
 // this checks to see if the number is odd
 if ($count % 2): 
 ?>
-<div class="container_blue" style="margin-right: 10px;<?=$box_error?>">  
-<? else: ?>
-<div class="container_blue" style="<?=$box_error?>">  	
-<? endif; ?>
-<div class="field_heading"><?=$count?></div> 
+<div class="container_blue" style="margin-right: 10px;<?php echo $box_error; ?>">  
+<?php else: ?>
+<div class="container_blue" style="<?php echo $box_error; ?>">  	
+<?php endif; ?>
+<div class="field_heading"><?php echo $count; ?></div> 
 <div class="type_heading">Field details<?php if ($box_error != NULL) { echo ' - <b>Error needs fixing!</b>'; } ?></div>
 
-<?php echo form_error("view_field_label$count"); ?>
-<?php echo form_error("view_field_name$count"); ?>
-<?php echo form_error("view_field_type$count"); ?>
+<?php echo form_error("view_field_label{$count}"); ?>
+<?php echo form_error("view_field_name{$count}"); ?>
+<?php echo form_error("view_field_type{$count}"); ?>
 
 <div class="input_box">
 
-<label for="view_field_label<?=$count?>">Label</label>
+<label for="view_field_label<?php echo $count; ?>">Label</label>
 
-<br /><input name="view_field_label<?=$count?>" id="view_field_label<?=$count?>" type="text" value="<?php echo set_value("view_field_label$count"); ?>" onkeyup="liveUrlTitle(<?=$count?>);" />
+<br /><input name="view_field_label<?php echo $count; ?>" id="view_field_label<?php echo $count; ?>" type="text" value="<?php echo set_value("view_field_label{$count}"); ?>" onkeyup="liveUrlTitle(<?php echo $count; ?>);" />
 </div>
 
 <div class="input_box">
 <label for="view_field_name">Name (no spaces)</label>
-<br /><input name="view_field_name<?=$count?>" id="view_field_name<?=$count?>" type="text" value="<?php echo set_value("view_field_name$count"); ?>" maxlength="30" />
+<br /><input name="view_field_name<?php echo $count; ?>" id="view_field_name<?php echo $count; ?>" type="text" value="<?php echo set_value("view_field_name{$count}"); ?>" maxlength="30" />
 </div>
 
 <div class="input_box">
-<label for="view_field_type<?=$count?>">Type</label>
+<label for="view_field_type<?php echo $count; ?>">Type</label>
 
 <?php
 $view_field_types = array(
-                        'input' => 'INPUT',
-						'textarea' => 'TEXTAREA',
-                        'select' => 'SELECT',
-                        'radio' => 'RADIO',
-                        'checkbox' => 'CHECKBOX',
-						'password' => 'PASSWORD'
+                        'input' 	=> 'INPUT',
+						'textarea' 	=> 'TEXTAREA',
+                        'select' 	=> 'SELECT',
+                        'radio' 	=> 'RADIO',
+                        'checkbox' 	=> 'CHECKBOX',
+						'password' 	=> 'PASSWORD'
                         );
 ?>
-<br /><?=form_dropdown("view_field_type$count", $view_field_types, set_value("view_field_type$count") )?>
+<br /><?php echo form_dropdown("view_field_type{$count}", $view_field_types, set_value("view_field_type{$count}")); ?>
 </div>
 
 <div class="type_heading">Database Schema</div>
 
-<?php echo form_error("db_field_type$count"); ?>
-<?php echo form_error("db_field_length_value$count"); ?>
+<?php echo form_error("db_field_type{$count}"); ?>
+<?php echo form_error("db_field_length_value{$count}"); ?>
 
 <div class="input_box">
-<label for="db_field_type<?=$count?>">Type</label>
-
+<label for="db_field_type<?php echo $count; ?>">Type</label>
 
 <?php
 $db_field_types = array(
-						'VARCHAR' => 'VARCHAR',
-						'TINYINT' => 'TINYINT',
-						'TEXT' => 'TEXT',
-						'DATE' => 'DATE',
-						'SMALLINT' => 'SMALLINT',
-						'MEDIUMINT' => 'MEDIUMINT',
-						'INT' => 'INT',
-						'BIGINT' => 'BIGINT',
-						'FLOAT' => 'FLOAT',
-						'DOUBLE' => 'DOUBLE',
-						'DECIMAL' => 'DECIMAL',
-						'DATETIME' => 'DATETIME',
-						'TIMESTAMP' => 'TIMESTAMP',
-						'TIME' => 'TIME',
-						'YEAR' => 'YEAR',
-						'CHAR' => 'CHAR',
-						'TINYBLOB' => 'TINYBLOB',
-						'TINYTEXT' => 'TINYTEXT',
-						'BLOB' => 'BLOB',
-						'MEDIUMBLOB' => 'MEDIUMBLOB',
-						'MEDIUMTEXT' => 'MEDIUMTEXT',
-						'LONGBLOB' => 'LONGBLOB',
-						'LONGTEXT' => 'LONGTEXT',
-						'ENUM' => 'ENUM',
-						'SET' => 'SET',
-						'BIT' => 'BIT',
-						'BOOL' => 'BOOL',
-						'BINARY' => 'BINARY',
-						'VARBINARY' => 'VARBINARY'
+						'VARCHAR' 		=> 'VARCHAR',
+						'TINYINT' 		=> 'TINYINT',
+						'TEXT' 			=> 'TEXT',
+						'DATE' 			=> 'DATE',
+						'SMALLINT' 		=> 'SMALLINT',
+						'MEDIUMINT' 	=> 'MEDIUMINT',
+						'INT' 			=> 'INT',
+						'BIGINT' 		=> 'BIGINT',
+						'FLOAT' 		=> 'FLOAT',
+						'DOUBLE' 		=> 'DOUBLE',
+						'DECIMAL' 		=> 'DECIMAL',
+						'DATETIME' 		=> 'DATETIME',
+						'TIMESTAMP' 	=> 'TIMESTAMP',
+						'TIME' 			=> 'TIME',
+						'YEAR' 			=> 'YEAR',
+						'CHAR' 			=> 'CHAR',
+						'TINYBLOB' 		=> 'TINYBLOB',
+						'TINYTEXT' 		=> 'TINYTEXT',
+						'BLOB' 			=> 'BLOB',
+						'MEDIUMBLOB' 	=> 'MEDIUMBLOB',
+						'MEDIUMTEXT' 	=> 'MEDIUMTEXT',
+						'LONGBLOB' 		=> 'LONGBLOB',
+						'LONGTEXT' 		=> 'LONGTEXT',
+						'ENUM' 			=> 'ENUM',
+						'SET' 			=> 'SET',
+						'BIT' 			=> 'BIT',
+						'BOOL' 			=> 'BOOL',
+						'BINARY' 		=> 'BINARY',
+						'VARBINARY' 	=> 'VARBINARY'
                         );
 ?>
-<br /><?=form_dropdown("db_field_type$count", $db_field_types, set_value("db_field_type$count") )?>
+<br /><?php echo form_dropdown("db_field_type{$count}", $db_field_types, set_value("db_field_type{$count}")); ?>
 
 </div>
 <div class="input_box">
-<label for="db_field_length_value<?=$count?>">Length/Values</label>
-<br /><input name="db_field_length_value<?=$count?>" type="text" value="<?php echo set_value("db_field_length_value$count"); ?>" />
+<label for="db_field_length_value<?php echo $count; ?>">Length/Values</label>
+<br /><input name="db_field_length_value<?php echo $count; ?>" type="text" value="<?php echo set_value("db_field_length_value{$count}"); ?>" />
 </div>
 
 <div class="type_heading">Validation Rules</div>
 
-
 <?php echo form_error('cont_validation_rules'.$count.'[]'); ?>
 
+<input type="checkbox" name="validation_rules<?php echo $count; ?>[]" id="validation_rules<?php echo $count; ?>[]" value="required" <?php echo set_checkbox('validation_rules'.$count.'[]', 'required'); ?>  /> 
+<label for="cont_validation_rules<?php echo $count; ?>[]">required</label>
 
-
-<input type="checkbox" name="validation_rules<?=$count?>[]" id="validation_rules<?=$count?>[]" value="required" <?php echo set_checkbox('validation_rules'.$count.'[]', 'required'); ?>  /> 
-<label for="cont_validation_rules<?=$count?>[]">required</label>
-
-<input type="checkbox" name="validation_rules<?=$count?>[]" id="validation_rules<?=$count?>[]" value="trim" <?php echo set_checkbox('validation_rules'.$count.'[]', 'trim'); ?> /> 
+<input type="checkbox" name="validation_rules<?php echo $count; ?>[]" id="validation_rules<?php echo $count; ?>[]" value="trim" <?php echo set_checkbox('validation_rules'.$count.'[]', 'trim'); ?> /> 
 <label for="cont_validation_rules[]">trim</label>
 
-<input type="checkbox" name="validation_rules<?=$count?>[]" id="validation_rules<?=$count?>[]" value="xss_clean" <?php echo set_checkbox('validation_rules'.$count.'[]', 'xss_clean'); ?> /> 
-<label for="cont_validation_rules<?=$count?>[]">xss_clean</label>
+<input type="checkbox" name="validation_rules<?php echo $count; ?>[]" id="validation_rules<?php echo $count; ?>[]" value="xss_clean" <?php echo set_checkbox('validation_rules'.$count.'[]', 'xss_clean'); ?> /> 
+<label for="cont_validation_rules<?php echo $count?>[]">xss_clean</label>
 
-<input type="checkbox" name="validation_rules<?=$count?>[]" id="validation_rules<?=$count?>[]" value="valid_email" <?php echo set_checkbox('validation_rules'.$count.'[]', 'valid_email'); ?> /> 
-<label for="cont_validation_rules<?=$count?>[]">valid_email</label>
+<input type="checkbox" name="validation_rules<?php echo $count; ?>[]" id="validation_rules<?php echo $count; ?>[]" value="valid_email" <?php echo set_checkbox('validation_rules'.$count.'[]', 'valid_email'); ?> /> 
+<label for="cont_validation_rules<?php echo $count?>[]">valid_email</label>
 
-<input type="checkbox" name="validation_rules<?=$count?>[]" id="validation_rules<?=$count?>[]" value="is_numeric" <?php echo set_checkbox('validation_rules'.$count.'[]', 'is_numeric'); ?> /> 
-<label for="cont_validation_rules<?=$count?>[]">is_numeric</label>
+<input type="checkbox" name="validation_rules<?php echo $count; ?>[]" id="validation_rules<?php echo $count; ?>[]" value="is_numeric" <?php echo set_checkbox('validation_rules'.$count.'[]', 'is_numeric'); ?> /> 
+<label for="cont_validation_rules<?php echo $count; ?>[]">is_numeric</label>
 
 </div>
-<?
+<?php
 } // end loop
 ?>
 
 <div style="clear:both"></div>
-<p><?=form_submit( 'submit', 'Build this form')?></p>
+<p><?php echo form_submit('submit', 'Build this form'); ?></p>
 
-<?=form_close()?>
+<?php echo form_close()?>
 </div>

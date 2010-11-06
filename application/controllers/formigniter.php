@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FormIgniter
  *
@@ -15,8 +16,8 @@
 
 define('DB', FALSE);
 
-class Formigniter extends Controller {
-
+class Formigniter extends Controller
+{
 	function Formigniter()
 	{
 		parent::Controller();	
@@ -47,6 +48,9 @@ class Formigniter extends Controller {
 	
 		// $this->load->helper('date_helper'); not required for v1
 	}
+
+	// --------------------------------------------------------------------
+
 	function index($field_total = '5')
 	{
 		// setup fieldset count for view file
@@ -174,6 +178,9 @@ class Formigniter extends Controller {
 			$this->build_page('built_form','Your form', $data);
 		}
 	}
+
+	// --------------------------------------------------------------------
+
 	function download($id = NULL, $file = 'all')
 	{ 
 		if ($id == NULL)
@@ -214,12 +221,8 @@ class Formigniter extends Controller {
 			$this->zip->download('formigniter-myform-'.date('d-m-Y').'.zip');
 		}
 	}
-	function user_comments()
-	{
-	     // Comments form - send your thoughts/suggestions   
-	}
-        
-    // --------------------------------------------------------------------
+
+	// --------------------------------------------------------------------
 
    /** 
     * function build_view()
@@ -407,9 +410,9 @@ EOT;
 
 EOT;
         return $view;
-        
-            
-        }
+
+	}
+
 	// --------------------------------------------------------------------
 
    /** 
@@ -421,6 +424,7 @@ EOT;
     * @return string
  	*
 	*/
+
 	private function build_controller($field_total = NULL)
 	{
 	      if ($field_total == NULL)
@@ -557,16 +561,17 @@ class Myform extends Controller {
 ?>';
 		return $controller;            
 	}
-        // --------------------------------------------------------------------
 
-        /** 
-         * function build_controller()
-         *
-         * write view file
-         * @access private
-         * @param $field_total - integar
-         * @return string
-         */
+	// --------------------------------------------------------------------
+
+   /** 
+    * function build_controller()
+    *
+    * write view file
+    * @access private
+    * @param $field_total - integar
+    * @return string
+    */
 
 	private function build_model($field_total = NULL)
 	{
@@ -611,14 +616,14 @@ class Myform_model extends Model {
 	
 	// --------------------------------------------------------------------
        
-        /** 
-         * function build_sql()
-         *
-         * write view file
-         * @access private
-         * @param $field_total - integar
-         * @return string
-         */
+   /** 
+    * function build_sql()
+    *
+    * write view file
+    * @access private
+    * @param $field_total - integar
+    * @return string
+    */
 
 	private function build_sql($field_total = NULL)
 	{
@@ -666,26 +671,26 @@ class Myform_model extends Model {
 	
 	// --------------------------------------------------------------------
 	
-        /** 
-        * function build_page()
-        *
-        * write view file
-        * @access private
-        * @param $page - string
-        * @param $title - string
-        * @param $data - string
-        * @return string
-        */
+   	/** 
+   	* function build_page()
+   	*
+   	* write view file
+   	* @access private
+   	* @param $page - string
+   	* @param $title - string
+   	* @param $data - string
+   	* @return string
+   	*/
 
-        private function build_page($page, $title,$data = null)
-        {
-    	        $data['title'] = $title;
-    	        $data['page'] = $page;
-    	        $this->load->vars($data); 
-    	        $this->load->view('formigniter/template');
-        }
+	private function build_page($page, $title,$data = null)
+	{
+		$data['title'] = $title;
+		$data['page'] = $page;
+		$this->load->vars($data);
+		$this->load->view('formigniter/template');
+	}
     
-    // --------------------------------------------------------------------
+	// --------------------------------------------------------------------
 	
 	/** Custom Form Validation Callback Rule
 	 *
@@ -697,6 +702,7 @@ class Myform_model extends Model {
 	 * @param	fields array
 	 * @return	bool
 	 */
+
 	function no_match($str, $fieldno)
 	{		
 		for($counter=1; $this->field_total >= $counter; $counter++)
@@ -717,74 +723,77 @@ class Myform_model extends Model {
 		
 		return TRUE;
 	}
+
+	// --------------------------------------------------------------------
 	
-        /**
-        * Makes directory, returns TRUE if exists or made
-        *
-        * @param string $pathname The directory path.
-        * @return boolean returns TRUE if exists or made or FALSE on failure.
-        * http://uk2.php.net/manual/en/function.mkdir.php#81656
-        */
-    
-        private function mkdir_recursive($pathname, $mode)
-        {
-                is_dir(dirname($pathname)) || mkdir_recursive(dirname($pathname), $mode);
-                return is_dir($pathname) || @mkdir($pathname, $mode);
-        }
-        // ------------------------------------------------------------------------
+   	/**
+   	* Makes directory, returns TRUE if exists or made
+   	*
+   	* @param string $pathname The directory path.
+   	* @return boolean returns TRUE if exists or made or FALSE on failure.
+   	* http://uk2.php.net/manual/en/function.mkdir.php#81656
+   	*/
 
-        /**
-         * Read a directory and add it to the zip.
-         *
-         * This is a customised version of the standard zip library function
-         * The directory structure is removed and a readmefile is included if it exists
-         * 
-         * This function recursively reads a folder and everything it contains (including
-         * sub-folders) and creates a zip based on it.  Whatever directory structure
-         * is in the original file path will be recreated in the zip file.
-         *
-         * @access	public
-         * @param	string	path to source
-         * @return	bool
-         */	
+   	private function mkdir_recursive($pathname, $mode)
+   	{
+		is_dir(dirname($pathname)) || mkdir_recursive(dirname($pathname), $mode);
+		return is_dir($pathname) || @mkdir($pathname, $mode);
+   	}
+   
+	// --------------------------------------------------------------------
 
-        private function read_dir($path)
-        {
-                if ($fp = @opendir($path))
+    /**
+     * Read a directory and add it to the zip.
+     *
+     * This is a customised version of the standard zip library function
+     * The directory structure is removed and a readmefile is included if it exists
+     * 
+     * This function recursively reads a folder and everything it contains (including
+     * sub-folders) and creates a zip based on it.  Whatever directory structure
+     * is in the original file path will be recreated in the zip file.
+     *
+     * @access	public
+     * @param	string	path to source
+     * @return	bool
+     */	
+
+	private function read_dir($path)
+	{
+		if ($fp = @opendir($path))
+		{
+			while (FALSE !== ($file = readdir($fp)))
         	{
-        		while (FALSE !== ($file = readdir($fp)))
+				if (@is_dir($path.$file) && substr($file, 0, 1) != '.')
+				{
+					$this->read_dir($path.$file."/");
+        		}
+				elseif (substr($file, 0, 1) != ".")
         		{
-        			if (@is_dir($path.$file) && substr($file, 0, 1) != '.')
-        			{					
-        				$this->read_dir($path.$file."/");
-        			}
-        			elseif (substr($file, 0, 1) != ".")
+					if (FALSE !== ($data = file_get_contents($path.$file)))
         			{
-        				if (FALSE !== ($data = file_get_contents($path.$file)))
-        				{	
-        				        // removed this as I don't want the full path structure in my zip					
-        				        // $this->add_data(str_replace("\\", "/", $path).$file, $data);
+						// removed this as I don't want the full path structure in my zip					
+						// $this->add_data(str_replace("\\", "/", $path).$file, $data);
 				        
-        					$this->zip->add_data($file, $data);
-        				}
+						$this->zip->add_data($file, $data);
         			}
         		}
-    
-                        // I have not included a readme on the source download
-                        // but this is used on my live server at http://toomanytabs.com/formigniter
-                        // to distribute to users who have built a form online
-                        $readme_path = './documents/formigniter_readme.txt';
-   
-                        if (is_file($readme_path))
-                        {
-                                $data = file_get_contents($readme_path);
-        						$this->zip->add_data($readme_path, $data);  
-                        }
-
-                        return TRUE;
         	}
-        }
+    
+            // I have not included a readme on the source download
+            // but this is used on my live server at http://toomanytabs.com/formigniter
+            // to distribute to users who have built a form online
+            $readme_path = './documents/formigniter_readme.txt';
 
-        // --------------------------------------------------------------------	
+            if (is_file($readme_path))
+            {
+				$data = file_get_contents($readme_path);
+				$this->zip->add_data($readme_path, $data);  
+            }
+
+            return TRUE;
+        }
+	}
+
+	// --------------------------------------------------------------------
 }
 ?>

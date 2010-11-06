@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FormIgniter
  *
@@ -13,13 +14,15 @@
  * @link	  http://formigniter.org
  */
 
-
-class Formigniter_model extends Model {
-
-    function __construct()
+class Formigniter_model extends Model 
+{	
+	function __construct()
     {
         parent::Model();
     }
+
+	// --------------------------------------------------------------------
+
     function get_form_count()
     {
 		$this->db->select('count(id) count');
@@ -34,6 +37,9 @@ class Formigniter_model extends Model {
 		$row = $query->row();
 		return $row->count;
     }
+
+	// --------------------------------------------------------------------
+
     function save_stats()
     {
         $this->db->set('created_at', time()); 
@@ -45,6 +51,8 @@ class Formigniter_model extends Model {
 	        return FALSE;
 		}
 		return $this->db->insert_id();
-    }   
+    }
+
+	// -------------------------------------------------------------------- 
 }
 ?>

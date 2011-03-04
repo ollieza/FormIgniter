@@ -16,11 +16,11 @@
 
 define('DB', FALSE);
 
-class Formigniter extends Controller
+class Formigniter extends CI_Controller
 {
 	function Formigniter()
 	{
-		parent::Controller();	
+		parent::__construct();	
 		
 		// Comment this out for a local version running without statistics.
 		if (DB)

@@ -14,11 +14,11 @@
  * @link	  http://formigniter.org
  */
 
-class Formigniter_model extends Model 
+class Formigniter_model extends CI_Model 
 {	
 	function __construct()
     {
-        parent::Model();
+        parent::__construct();
     }
 
 	// --------------------------------------------------------------------

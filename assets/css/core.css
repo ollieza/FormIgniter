@@ -52,10 +52,10 @@ div.container_blue {
 }
 
 div.top_right {
-        position:absolute;
+        position:relative;
         top:5px;
         right:0px;
-
+		float: right;
 }
 div.field_heading {
          position:absolute;

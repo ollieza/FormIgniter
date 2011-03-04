@@ -434,11 +434,11 @@ EOT;
 
               $controller = '<?php
 
-class Myform extends Controller {
+class Myform extends CI_Controller {
                
 	function Myform()
 	{
- 		parent::Controller();
+ 		parent::__construct();
 		$this->load->library(\'form_validation\');
 		$this->load->database();
 		$this->load->helper(\'form\');
@@ -581,11 +581,11 @@ class Myform extends Controller {
 		}
 		$model = '<?php
 
-class Myform_model extends Model {
+class Myform_model extends CI_Model {
 
 	function __construct()
 	{
-		parent::Model();
+		parent::__construct();
 	}
 	
 	// --------------------------------------------------------------------

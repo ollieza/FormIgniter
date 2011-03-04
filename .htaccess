@@ -2,7 +2,7 @@
 
 RewriteEngine on
 RewriteBase /
-RewriteCond $1 !^(index\.php|assets|user_guide|robots\.txt|email)
+RewriteCond $1 !^(index\.php|assets|documents|forms|robots\.txt|email)
 RewriteRule ^(.*)$ index.php/$1 [L]
 
 </IfModule>

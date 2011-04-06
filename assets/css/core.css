@@ -91,7 +91,7 @@ div.top_error {
 div.error {
 	font-weight: bold;
 	margin: 23px 0px 5px 0;
-	background: url(/assets/images/formigniter/error.png) no-repeat;
+	background: url(../images/formigniter/error.png) no-repeat;
 	padding-left: 25px;
 }
 
@@ -136,7 +136,7 @@ a:hover {
  padding: 0;
 }
 #nav2 {
- background: #fff url(images/nav_bg_darker.jpg) repeat-x left top;
+ background: #fff url(../images/nav_bg_darker.jpg) repeat-x left top;
  padding: 0 310px 0 0;
  margin: 0;
  text-align: right;
@@ -157,7 +157,7 @@ a:hover {
 }
 
 #nav_inner .td_sep {
- background: transparent url(images/nav_separator_darker.jpg) repeat-y left top;
+ background: transparent url(../images/nav_separator_darker.jpg) repeat-y left top;
  width: 25%;
  padding: 0 0 0 20px;
 }
@@ -171,7 +171,7 @@ a:hover {
  margin: 0 0 10px 0;
 }
 #nav_inner ul {
- list-style-image: url(images/arrow.gif);
+ list-style-image: url(../images/arrow.gif);
  padding: 0 0 0 18px;
  margin: 8px 0 12px 0;
 }
@@ -338,7 +338,7 @@ padding: 3px 0 7px 3px;
 }
 
 #content ul {
- list-style-image: url(images/arrow.gif);
+ list-style-image: url(../images/arrow.gif);
  margin: 10px 0 12px 0;
 }
 

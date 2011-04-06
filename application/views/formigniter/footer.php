@@ -6,5 +6,8 @@
 	</div>       
 </div>	
 </div>
+
+<a href="http://github.com/ollierattue/FormIgniter"><img style="position: absolute; top: 0; right: 0; border: 0;" src="<?php echo base_url();?>assets/images/formigniter/ribbons_source_code.png" alt="Source code on GitHub"></a>
+
 </body>
 </html>

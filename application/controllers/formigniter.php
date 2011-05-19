@@ -507,7 +507,7 @@ class Myform extends CI_Controller {
 	
 		if ($this->form_validation->run() == FALSE) // validation hasn\'\t been passed
 		{
-			$this->load->view(\'myform_view\', $data);
+			$this->load->view(\'myform_view\');
 		}
 		else // passed validation proceed to post success logic
 		{

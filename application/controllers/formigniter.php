@@ -80,7 +80,7 @@ class Formigniter extends CI_Controller
 			$this->form_validation->set_rules("view_field_type{$counter}",'form field type',"trim|requiredif[view_field_label{$counter}]|xss_clean");
 			$this->form_validation->set_rules("db_field_type{$counter}",'db field type',"trim|requiredif[view_field_label{$counter}]|xss_clean");
 			$this->form_validation->set_rules("db_field_length_value{$counter}",'db field length',"trim|requiredif[view_field_label{$counter}]|xss_clean");
-			$this->form_validation->set_rules('validation_rules'.{$counter}.'[]','validation rules','trim|xss_clean');
+			$this->form_validation->set_rules('validation_rules'.$counter.'[]','validation rules','trim|xss_clean');
 		}
 			
 		$this->form_validation->set_error_delimiters('<div class="error">Error: ', '</div>');

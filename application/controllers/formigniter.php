@@ -40,10 +40,10 @@ class Formigniter extends CI_Controller
 		
 		// filenames 
 		$this->files = array(
-	                        'model' => 'myform_model',
-	                        'view' => 'myform_view',
-	                        'controller' => 'myform',
-	                        'sql'  => 'sql'
+	                        'model' 		=> 'myform_model',
+	                        'view' 			=> 'myform_view',
+	                        'controller' 	=> 'myform',
+	                        'sql'  			=> 'sql'
 	                        );
 	
 		// $this->load->helper('date_helper'); not required for v1

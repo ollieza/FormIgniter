@@ -68,19 +68,19 @@ class Formigniter extends CI_Controller
 		{
 			if ($counter != 1) // better to do it this way round as this statement will be fullfilled more than the one below
 			{
-				$this->form_validation->set_rules("view_field_label$counter",'form field label','trim|xss_clean');       
+				$this->form_validation->set_rules("view_field_label{$counter}",'form field label','trim|xss_clean');       
 			}
 			else
 			{
 				// the first field always needs to be required i.e. we need to have at least one field in our form
-				$this->form_validation->set_rules("view_field_label$counter",'form field label','trim|required|xss_clean');
+				$this->form_validation->set_rules("view_field_label{$counter}",'form field label','trim|required|xss_clean');
 			}
 			
-			$this->form_validation->set_rules("view_field_name$counter",'form field name',"trim|requiredif[view_field_label$counter]|callback_no_match[$counter]|xss_clean");
-			$this->form_validation->set_rules("view_field_type$counter",'form field type',"trim|requiredif[view_field_label$counter]|xss_clean");
-			$this->form_validation->set_rules("db_field_type$counter",'db field type',"trim|requiredif[view_field_label$counter]|xss_clean");
-			$this->form_validation->set_rules("db_field_length_value$counter",'db field length',"trim|requiredif[view_field_label$counter]|xss_clean");
-			$this->form_validation->set_rules('validation_rules'.$counter.'[]','validation rules','trim|xss_clean');
+			$this->form_validation->set_rules("view_field_name{$counter}",'form field name',"trim|requiredif[view_field_label{$counter}]|callback_no_match[{$counter}]|xss_clean");
+			$this->form_validation->set_rules("view_field_type{$counter}",'form field type',"trim|requiredif[view_field_label{$counter}]|xss_clean");
+			$this->form_validation->set_rules("db_field_type{$counter}",'db field type',"trim|requiredif[view_field_label{$counter}]|xss_clean");
+			$this->form_validation->set_rules("db_field_length_value{$counter}",'db field length',"trim|requiredif[view_field_label{$counter}]|xss_clean");
+			$this->form_validation->set_rules('validation_rules'.{$counter}.'[]','validation rules','trim|xss_clean');
 		}
 			
 		$this->form_validation->set_error_delimiters('<div class="error">Error: ', '</div>');
@@ -253,14 +253,14 @@ echo form_open(\'my_form\', $attributes); ?>
 					// only build on fields that have data entered. 
 					//Due to the requiredif rule if the first field is set the the others must be
 
-        	        if (set_value("view_field_label$counter") == NULL)
+        	        if (set_value("view_field_label{$counter}") == NULL)
         	        {
         		        continue; 	// move onto next iteration of the loop
         	        }
 
-        	        $field_label = set_value("view_field_label$counter");
-        	        $field_name = set_value("view_field_name$counter");
-					$field_type = set_value("view_field_type$counter");
+        	        $field_label = set_value("view_field_label{$counter}");
+        	        $field_name = set_value("view_field_name{$counter}");
+					$field_type = set_value("view_field_type{$counter}");
 		
 		if ($field_type != 'checkbox') // checkbox appears to the left of the checkbox so I can't add now for a checkbox
 		{
@@ -380,9 +380,9 @@ EOT;
 						{
 							$type = 'password';
 						}
-						if (set_value("db_field_length_value$counter") != NULL)
+						if (set_value("db_field_length_value{$counter}") != NULL)
 						{
-							$maxlength = 'maxlength="'.set_value("db_field_length_value$counter").'"';
+							$maxlength = 'maxlength="'.set_value("db_field_length_value{$counter}").'"';
 						}
 						
                         $view .= <<<EOT
@@ -457,7 +457,7 @@ class Myform extends CI_Controller {
 	
 			//Due to the requiredif rule if the first field is set the the others must be
 	
-			if (set_value("view_field_label$counter") == NULL)
+			if (set_value("view_field_label{$counter}") == NULL)
 			{
 				continue; 	// move onto next iteration of the loop
 			}
@@ -465,7 +465,7 @@ class Myform extends CI_Controller {
 			$last_field = $counter;
 			
 			$controller .= '			
-		$this->form_validation->set_rules(\''.set_value("view_field_name$counter").'\',\''.set_value("view_field_label$counter").'\',\'';
+		$this->form_validation->set_rules(\''.set_value("view_field_name{$counter}").'\',\''.set_value("view_field_label{$counter}").'\',\'';
 			
 			// set a friendly variable name
             $validation_rules = set_value('validation_rules'.$counter.'[]');
@@ -488,14 +488,14 @@ class Myform extends CI_Controller {
 				}
             }
 			
-			if (set_value("db_field_length_value$counter") != NULL)
+			if (set_value("db_field_length_value{$counter}") != NULL)
 			{
 				if ($rule_counter > 0)
 				{
 					$controller .= '|';
 				}
 
-				$controller .= 'max_length['.set_value("db_field_length_value$counter").']';
+				$controller .= 'max_length['.set_value("db_field_length_value{$counter}").']';
 			}
 			
 			$controller .= "');";
@@ -519,13 +519,13 @@ class Myform extends CI_Controller {
 		for($counter=1; $field_total >= $counter; $counter++)
 		{
 			//Due to the requiredif rule if the first field is set the the others must be
-			if (set_value("view_field_label$counter") == NULL)
+			if (set_value("view_field_label{$counter}") == NULL)
 			{
 				continue; 	// move onto next iteration of the loop
 			}
 			
 			$controller .= '
-					       	\''.set_value("view_field_name$counter").'\' => set_value(\''.set_value("view_field_name$counter").'\')';
+					       	\''.set_value("view_field_name{$counter}").'\' => set_value(\''.set_value("view_field_name{$counter}").'\')';
 			
 			if ($counter != $last_field)
 			{
@@ -638,17 +638,17 @@ class Myform_model extends CI_Model {
 		for($counter=1; $field_total >= $counter; $counter++)
 		{
 			//Due to the requiredif rule if the first field is set the the others must be
-			if (set_value("view_field_label$counter") == NULL)
+			if (set_value("view_field_label{$counter}") == NULL)
 			{
 				continue; 	// move onto next iteration of the loop
 			}
 
 		$sql .= '
- '.set_value("view_field_name$counter").' '.set_value("db_field_type$counter");
+ '.set_value("view_field_name{$counter}").' '.set_value("db_field_type{$counter}");
 		
-			if (!in_array(set_value("db_field_type$counter"), array('TEXT', 'DATETIME'))) // There are no doubt more types where a value/length isn't possible - needs investigating
+			if (!in_array(set_value("db_field_type{$counter}"), array('TEXT', 'DATETIME'))) // There are no doubt more types where a value/length isn't possible - needs investigating
 			{
-				$sql .= '('.set_value("db_field_length_value$counter").')';
+				$sql .= '('.set_value("db_field_length_value{$counter}").')';
 			}
 		
 
@@ -714,7 +714,7 @@ class Myform_model extends CI_Model {
 				continue;				
 			}
 			
-			if ($str == $_POST["view_field_name$counter"])
+			if ($str == $_POST["view_field_name{$counter}"])
 			{
 				$this->form_validation->set_message('no_match', "Field names must be unique!");
 				return FALSE;

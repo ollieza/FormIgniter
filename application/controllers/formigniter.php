@@ -34,7 +34,7 @@ class Formigniter extends CI_Controller
 		$this->load->helper('url');
 		$this->load->helper('file');
 		$this->load->helper('download');
-		$this->output->enable_profiler(TRUE);
+		//$this->output->enable_profiler(TRUE);
 		
 		$this->load->model('formigniter_model');
 		

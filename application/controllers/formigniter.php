@@ -313,7 +313,7 @@ EOT;
 	<?php echo form_error('$field_name'); ?>
 	<br />
 							
-	<?=form_textarea( array( 'name' => '$field_name', 'rows' => '5', 'cols' => '80', 'value' => set_value('$field_name') ) )?>
+	<?php echo form_textarea( array( 'name' => '$field_name', 'rows' => '5', 'cols' => '80', 'value' => set_value('$field_name') ) )?>
 </p>";
 						break;
 						
@@ -349,7 +349,7 @@ EOT;
                                                   \'example_value1\'    => \'example option 1\'
                                                 ); ?>
 
-        <br /><?=form_dropdown(\''.$field_name.'\', $options, set_value(\''.$field_name.'\'))?>
+        <br /><?php echo form_dropdown(\''.$field_name.'\', $options, set_value(\''.$field_name.'\'))?>
 </p>                                             
                         ';
                         break;

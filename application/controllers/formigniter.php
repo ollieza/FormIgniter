@@ -34,7 +34,7 @@ class Formigniter extends CI_Controller
 		$this->load->helper('url');
 		$this->load->helper('file');
 		$this->load->helper('download');
-		//$this->output->enable_profiler(TRUE);
+		$this->output->enable_profiler(TRUE);
 		
 		$this->load->model('formigniter_model');
 		
@@ -279,13 +279,15 @@ EOT;
 EOT;
 		}
                         // set a friendly variable name
-                        $validation_rules = set_value('validation_rules'.$counter.'[]');
-                
+                        $validation_rules = $_POST["validation_rules{$counter}"];   
+						
+						// Not sure why the below does not work - 05/19/2011
+						//set_value('validation_rules'.$counter.'[]'); 
+						
                         if (is_array($validation_rules))
                         {       
                                 // rules have been selected for this fieldset
-                        
-                                foreach($validation_rules as $key => $value)
+                              	foreach($validation_rules as $key => $value)
                                 {
                                         if($value == 'required')
                                         {
@@ -465,10 +467,13 @@ class Myform extends CI_Controller {
 			$last_field = $counter;
 			
 			$controller .= '			
-		$this->form_validation->set_rules(\''.set_value("view_field_name{$counter}").'\',\''.set_value("view_field_label{$counter}").'\',\'';
+		$this->form_validation->set_rules(\''.set_value("view_field_name{$counter}").'\', \''.set_value("view_field_label{$counter}").'\', \'';
 			
 			// set a friendly variable name
-            $validation_rules = set_value('validation_rules'.$counter.'[]');
+            $validation_rules = $_POST["validation_rules{$counter}"];   
+			
+			// Not sure why the below does not work - 05/19/2011
+			// set_value('validation_rules'.$counter.'[]');
             
             // rules have been selected for this fieldset
             $rule_counter = 0;
@@ -505,7 +510,7 @@ class Myform extends CI_Controller {
 			
 		$this->form_validation->set_error_delimiters(\'<br /><span class="error">\', \'</span>\');
 	
-		if ($this->form_validation->run() == FALSE) // validation hasn\'\t been passed
+		if ($this->form_validation->run() == FALSE) // validation hasn\'t been passed
 		{
 			$this->load->view(\'myform_view\');
 		}

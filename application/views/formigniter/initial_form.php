@@ -169,7 +169,12 @@ for ($count = 5; $count <= 50; $count = $count * 2) // loop to build 10 form box
 If DB field type is "enum" or "set", please enter the values using this format: 'a','b','c'...
 <br />If you ever need to put a backslash ("\") or a single quote ("'") amongst those values, precede it with a backslash (for example '\\xyz' or 'a\'b').
 </p>
-
+<p>
+	<label for="formname">Formname:</label><input type="text" id="formname" name="formname" />
+	<label for="controllername">Controllername:</label><input type="text" id="controllername" name="controllername" />
+	<label for="modelname">Modelname:</label><input type="text" id="modelname" name="modelname" />
+	<label for="tablename">Tablename:</label><input type="text" id="tablename" name="tablename" />
+</p>
 <?php
 for ($count = 1; $count <= $field_total; $count++) // loop to build 10 form boxes
 {

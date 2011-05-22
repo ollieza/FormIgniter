@@ -38,11 +38,30 @@ class Formigniter extends CI_Controller
 		
 		$this->load->model('formigniter_model');
 		
+		//getting the name values
+		$this->formname = $this->input->post("formname");
+		$this->controllername = $this->input->post("controllername");
+		$this->modelname = $this->input->post("modelname");
+		$this->tablename = $this->input->post("tablename");
+
+		//set default values if needed
+		if($this->formname == "") {
+			$this->formname = "myform";
+		}
+		if($this->controllername == "") {
+			$this->controllername = $this->formname;
+		}
+		if($this->modelname == "") {
+			$this->modelname = $this->formname.'_model';
+		}
+		if($this->tablename == "") {
+			$this->tablename = $this->formname;
+		}
 		// filenames 
 		$this->files = array(
-	                        'model' 		=> 'myform_model',
-	                        'view' 			=> 'myform_view',
-	                        'controller' 	=> 'myform',
+	                        'model' 		=> $this->modelname,
+	                        'view' 			=> $this->formname.'_view',
+	                        'controller' 	=> $this->controllername,
 	                        'sql'  			=> 'sql'
 	                        );
 	
@@ -243,7 +262,7 @@ class Formigniter extends CI_Controller
 	    $view = '<?php // Change the css classes to suit your needs    
 
 $attributes = array(\'class\' => \'\', \'id\' => \'\');
-echo form_open(\'my_form\', $attributes); ?>
+echo form_open(\''.$this->controllername.'\', $attributes); ?>
 ';
 
                 for($counter=1; $field_total >= $counter; $counter++)
@@ -436,16 +455,16 @@ EOT;
 
               $controller = '<?php
 
-class Myform extends CI_Controller {
+class '.$this->controllername.' extends CI_Controller {
                
-	function Myform()
+	function __construct()
 	{
  		parent::__construct();
 		$this->load->library(\'form_validation\');
 		$this->load->database();
 		$this->load->helper(\'form\');
 		$this->load->helper(\'url\');
-		$this->load->model(\'myform_model\');
+		$this->load->model(\''.$this->modelname.'\');
 	}	
 	function index()
 	{';
@@ -512,7 +531,7 @@ class Myform extends CI_Controller {
 	
 		if ($this->form_validation->run() == FALSE) // validation hasn\'t been passed
 		{
-			$this->load->view(\'myform_view\');
+			$this->load->view(\''.$this->formname.'_view\');
 		}
 		else // passed validation proceed to post success logic
 		{
@@ -546,9 +565,9 @@ class Myform extends CI_Controller {
 					
 			// run insert model to write data to db
 		
-			if ($this->myform_model->SaveForm($form_data) == TRUE) // the information has therefore been successfully saved in the db
+			if ($this->'.$this->modelname.'->SaveForm($form_data) == TRUE) // the information has therefore been successfully saved in the db
 			{
-				redirect(\'myform/success\');   // or whatever logic needs to occur
+				redirect(\''.$this->controllername.'/success\');   // or whatever logic needs to occur
 			}
 			else
 			{
@@ -586,7 +605,7 @@ class Myform extends CI_Controller {
 		}
 		$model = '<?php
 
-class Myform_model extends CI_Model {
+class '.$this->modelname.' extends CI_Model {
 
 	function __construct()
 	{
@@ -605,7 +624,7 @@ class Myform_model extends CI_Model {
 
 	function SaveForm($form_data)
 	{
-		$this->db->insert(\'myform\', $form_data);
+		$this->db->insert(\''.$this->tablename.'\', $form_data);
 		
 		if ($this->db->affected_rows() == \'1\')
 		{
@@ -637,7 +656,7 @@ class Myform_model extends CI_Model {
 			return FALSE;
 		}
 		
-		$sql = 'CREATE TABLE IF NOT EXISTS  `myform` (
+		$sql = 'CREATE TABLE IF NOT EXISTS  `'.$this->tablename.'` (
  id int(40) NOT NULL auto_increment,';
 		
 		for($counter=1; $field_total >= $counter; $counter++)

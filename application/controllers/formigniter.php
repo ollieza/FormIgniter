@@ -460,7 +460,7 @@ EOT;
 
               $controller = '<?php
 
-class '.$this->controllername.' extends CI_Controller {
+class '.ucfirst($this->controllername).' extends CI_Controller {
                
 	function __construct()
 	{
@@ -615,7 +615,7 @@ class '.$this->controllername.' extends CI_Controller {
 		}
 		$model = '<?php
 
-class '.$this->modelname.' extends CI_Model {
+class '.ucfirst($this->modelname).' extends CI_Model {
 
 	function __construct()
 	{

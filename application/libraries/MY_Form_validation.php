@@ -1,11 +1,26 @@
 <?php
 
-class MY_Form_validation extends CI_Form_validation 
+/**
+ * MY_Form_validation Class
+ *
+ * This library extends the native Form validation library.
+ * It adds a custom callback rule
+ *
+ * @package	CodeIgniter
+ * @subpackage Libraries
+ * @category Forms
+ * @author Ollie Rattue
+ */
+
+class MY_Form_validation extends CI_Form_validation
 {
-	function MY_Form_validation()
-	{
-		parent::__construct();
-	}
+
+    function __construct()
+    {
+        parent::__construct();
+
+		$this->CI =& get_instance();
+    }
 	
 	// --------------------------------------------------------------------
 	

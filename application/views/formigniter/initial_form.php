@@ -162,19 +162,14 @@ for ($count = 5; $count <= 50; $count = $count * 2) // loop to build 10 form box
 
 <h3>Fill out the fields you want in your form, with field types, database type, and your validation rules and FormIgniter will output the code for the MVC + a database schema. Give it a go!</h3>
 
+<div class="names">
+	<h4>MVC + db names (optional)</h4>
+	<label for="formname">Form name </label><input type="text" id="formname" name="formname" />
+	<label for="controllername">Controller name </label><input type="text" id="controllername" name="controllername" />
+	<label for="modelname">Model name </label><input type="text" id="modelname" name="modelname" />
+	<label for="tablename">Table name </label><input type="text" id="tablename" name="tablename" />
+</div>
 
-<p>Please note each field needs all details completed, but you don't need to submit all available fields e.g. if you selected a maximum of 10 fields you can submit 8.</p>
-
-<p style="color: #5A5A5A; font-size: 12px;">
-If DB field type is "enum" or "set", please enter the values using this format: 'a','b','c'...
-<br />If you ever need to put a backslash ("\") or a single quote ("'") amongst those values, precede it with a backslash (for example '\\xyz' or 'a\'b').
-</p>
-<p>
-	<label for="formname">Formname:</label><input type="text" id="formname" name="formname" />
-	<label for="controllername">Controllername:</label><input type="text" id="controllername" name="controllername" />
-	<label for="modelname">Modelname:</label><input type="text" id="modelname" name="modelname" />
-	<label for="tablename">Tablename:</label><input type="text" id="tablename" name="tablename" />
-</p>
 <?php
 for ($count = 1; $count <= $field_total; $count++) // loop to build 10 form boxes
 {
@@ -196,7 +191,7 @@ if ($count % 2):
 <div class="container_blue" style="<?php echo $box_error; ?>">  	
 <?php endif; ?>
 <div class="field_heading"><?php echo $count; ?></div> 
-<div class="type_heading">Field details<?php if ($box_error != NULL) { echo ' - <b>Error needs fixing!</b>'; } ?></div>
+<div class="type_heading">Field details <?php if ($box_error != NULL) { echo ' - <b>Error needs fixing!</b>'; } ?></div>
 
 <?php echo form_error("view_field_label{$count}"); ?>
 <?php echo form_error("view_field_name{$count}"); ?>
@@ -204,18 +199,18 @@ if ($count % 2):
 
 <div class="input_box">
 
-<label for="view_field_label<?php echo $count; ?>">Label</label>
+<label for="view_field_label<?php echo $count; ?>">Label <span class="required">*</span></label>
 
 <br /><input name="view_field_label<?php echo $count; ?>" id="view_field_label<?php echo $count; ?>" type="text" value="<?php echo set_value("view_field_label{$count}"); ?>" onkeyup="liveUrlTitle(<?php echo $count; ?>);" />
 </div>
 
 <div class="input_box">
-<label for="view_field_name">Name (no spaces)</label>
+<label for="view_field_name">Name (no spaces) <span class="required">*</span></label>
 <br /><input name="view_field_name<?php echo $count; ?>" id="view_field_name<?php echo $count; ?>" type="text" value="<?php echo set_value("view_field_name{$count}"); ?>" maxlength="30" />
 </div>
 
 <div class="input_box">
-<label for="view_field_type<?php echo $count; ?>">Type</label>
+<label for="view_field_type<?php echo $count; ?>">Type <span class="required">*</span></label>
 
 <?php
 $view_field_types = array(
@@ -236,7 +231,7 @@ $view_field_types = array(
 <?php echo form_error("db_field_length_value{$count}"); ?>
 
 <div class="input_box">
-<label for="db_field_type<?php echo $count; ?>">Type</label>
+<label for="db_field_type<?php echo $count; ?>">Type <span class="required">*</span></label>
 
 <?php
 $db_field_types = array(
@@ -279,7 +274,7 @@ $db_field_types = array(
 <br /><input name="db_field_length_value<?php echo $count; ?>" type="text" value="<?php echo set_value("db_field_length_value{$count}"); ?>" />
 </div>
 
-<div class="type_heading">Validation Rules</div>
+<div class="type_heading">Validation Rules (optional)</div>
 
 <?php echo form_error('cont_validation_rules'.$count.'[]'); ?>
 

@@ -6,6 +6,11 @@ body {
  	color: #333;
  	background-color: #fff;
 }
+
+span.required {
+	color: red;
+}
+
 div#container {
 	width:960px;
 	margin:0 auto;
@@ -41,6 +46,28 @@ input, select
 {
 margin-top: 15px;
 }
+
+div.names {
+    background-color:#EBF4FA;
+    border:1px solid #BBD9EE;
+    padding:0px 7px 10px 7px;
+    float: left;
+    margin: 10px 0px 10px 0px;
+    position:relative;
+	width: 945px;
+	}
+	div.names h4 {
+		margin-top: 10px !important;
+		}
+	div.names label {
+		font-size: 13px !important;
+		margin-right: 6px;
+		}	
+	div.names input {
+		width: 123px !important;
+		margin-right: 10px;
+		}
+		
 div.container_blue {
         background-color:#EBF4FA;
         border:1px solid #BBD9EE;
@@ -262,7 +289,7 @@ padding: 3px 0 7px 3px;
  background-color: transparent;
  color: #444;
  font-size: 16px;
- font-weight: bold;
+ font-weight: normal;
  margin: 16px 0 15px 0;
  padding: 0 0 0 0;
 }

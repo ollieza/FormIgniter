@@ -298,7 +298,12 @@ EOT;
 EOT;
 		}
                         // set a friendly variable name
-                        $validation_rules = $_POST["validation_rules{$counter}"];   
+                        $validation_rules = NULL;
+
+						if (isset($_POST["validation_rules{$counter}"]))
+						{
+							$validation_rules = $_POST["validation_rules{$counter}"];
+						}   
 						
 						// Not sure why the below does not work - 05/19/2011
 						//set_value('validation_rules'.$counter.'[]'); 
@@ -488,8 +493,13 @@ class '.$this->controllername.' extends CI_Controller {
 			$controller .= '			
 		$this->form_validation->set_rules(\''.set_value("view_field_name{$counter}").'\', \''.set_value("view_field_label{$counter}").'\', \'';
 			
-			// set a friendly variable name
-            $validation_rules = $_POST["validation_rules{$counter}"];   
+    		// set a friendly variable name
+    		$validation_rules = NULL;
+
+			if (isset($_POST["validation_rules{$counter}"]))
+			{
+				$validation_rules = $_POST["validation_rules{$counter}"];
+			}   
 			
 			// Not sure why the below does not work - 05/19/2011
 			// set_value('validation_rules'.$counter.'[]');

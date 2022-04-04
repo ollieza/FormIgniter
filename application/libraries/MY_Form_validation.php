@@ -9,7 +9,6 @@
  * @package	CodeIgniter
  * @subpackage Libraries
  * @category Forms
- * @author Ollie Rattue
  */
 
 class MY_Form_validation extends CI_Form_validation

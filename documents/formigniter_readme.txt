@@ -1,8 +1,5 @@
 FormIgniter readme file
 
-http://formigniter.org/
-Ollie Rattue - orattue[at]toomanytabs.com
-
 Codeigniter form files:
 
 controller - myform.php

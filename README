@@ -20,9 +20,3 @@ Save statistics to a database
 If you want to save a count of the number of forms built import the database schema from ./schema.sql
 
 Change the constant DB in ./controllers/formigniter.php to TRUE.
-
-Extra
------
-
-If you'd like to request changes, report bug fixes, or contact
-the developer of this library, email <orattue[at]toomanytabs.com>
